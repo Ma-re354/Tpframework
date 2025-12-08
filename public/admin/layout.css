@@ -1,0 +1,284 @@
+/* Barre latérale */
+.sidebar {
+    width: var(--sidebar-width);
+    background: linear-gradient(135deg, #3a476e 0%, #5c6784 100%);
+    color: #fff;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    transition: all 0.3s;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(44, 46, 68, 0.08);
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    position: relative;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+    font-weight: 500;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: #4cc9f0;
+    color: #181926;
+    border-left-color: #4cc9f0;
+}
+
+.nav-link i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-link span {
+    flex: 1;
+}
+
+.dropdown-icon {
+    margin-left: auto;
+    transition: transform 0.3s;
+}
+
+.has-submenu.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Sous-menu */
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.has-submenu.active .submenu {
+    max-height: 200px;
+}
+
+.submenu a {
+    display: block;
+    padding: 12px 20px 12px 50px;
+    color: var(--gray-color);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.submenu a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+}
+
+/* Barre supérieure */
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    height: var(--topbar-height);
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+/* Contenu principal */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* Espacement entre tableaux/sections et la grille de cartes */
+.recent-activity + .cards-grid,
+.table-container + .cards-grid {
+    margin-top: 30px;
+}
+
+/* Si on veut plus d'espace sur grands écrans */
+@media (min-width: 1200px) {
+    .recent-activity + .cards-grid,
+    .table-container + .cards-grid {
+        margin-top: 40px;
+    }
+}
+
+/* Responsive pour la barre latérale */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 70px;
+    }
+    
+    .sidebar-header h2, .nav-link span, .dropdown-icon {
+        display: none;
+    }
+    
+    .nav-link {
+        justify-content: center;
+        padding: 15px;
+    }
+    
+    .nav-link i {
+        margin-right: 0;
+        font-size: 1.3rem;
+    }
+    
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+    
+    .submenu a {
+        padding-left: 20px;
+    }
+}
+/* Sous-menu amélioré */
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.has-submenu.active .submenu {
+    max-height: 300px;
+}
+
+.submenu a {
+    display: block;
+    padding: 12px 20px 12px 50px;
+    color: var(--gray-color);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    border-left: 3px solid transparent;
+    position: relative;
+}
+
+.submenu a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.submenu a::before {
+    content: '•';
+    position: absolute;
+    left: 35px;
+    color: var(--gray-color);
+    transition: color 0.3s;
+}
+
+.submenu a:hover::before {
+    color: var(--primary-color);
+}
+
+/* Animation pour l'icône de dropdown */
+.dropdown-icon {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.has-submenu.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Style pour les sous-menus ouverts */
+.has-submenu.active > .nav-link {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+}
+
+/* Faire correspondre le style des toggles de sous-menu avec les nav-links */
+.nav-toggle {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--dark-color);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.nav-toggle:hover, .nav-toggle.active {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.nav-toggle i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-toggle span {
+    flex: 1;
+}
+
+.has-submenu.active > .nav-toggle {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+}
+
+@media (max-width: 992px) {
+    .sidebar-header h2, .nav-link span, .nav-toggle span, .dropdown-icon {
+        display: none;
+    }
+
+    .nav-toggle {
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .nav-toggle i {
+        margin-right: 0;
+        font-size: 1.3rem;
+    }
+}
