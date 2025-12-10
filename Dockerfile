@@ -15,6 +15,9 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 # Installer les extensions PHP
 RUN docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd
 
+# Certifier les certificats SSL pour MySQL SSL (Aiven)
+RUN apt-get install -y ca-certificates
+
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -39,4 +42,4 @@ EXPOSE 8000
 # 2. On joue les migrations (si la DB est prête).
 # 3. On lance le serveur.
 
-CMD sh -c "php artisan config:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000"
+CMD sh -c "php artisan config:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
