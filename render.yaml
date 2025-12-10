@@ -3,8 +3,15 @@ services:
     name: culturebenin
     runtime: php
     plan: free
-    buildCommand: composer install --no-dev --optimize-autoloader && php artisan config:clear && php artisan migrate --force
-    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+    buildCommand: |
+      composer install --no-dev --optimize-autoloader
+      php artisan key:generate
+      php artisan storage:link
+      php artisan config:clear
+      php artisan route:clear
+      php artisan view:clear
+      php artisan migrate --force
+    startCommand: ""
     envVars:
       - key: APP_NAME
         value: CultureBenin
@@ -16,6 +23,8 @@ services:
         value: error
       - key: LOG_CHANNEL
         value: stack
+
+      # DB AIVEN
       - key: DB_CONNECTION
         value: mysql
       - key: DB_HOST
@@ -28,8 +37,12 @@ services:
         value: avnadmin
       - key: DB_PASSWORD
         scope: secret
+
+      # SSL pour Aiven
       - key: MYSQL_ATTR_SSL_CA
         value: /etc/ssl/certs/ca-certificates.crt
+
+      # SESSION / CACHE
       - key: SESSION_DRIVER
         value: database
       - key: QUEUE_CONNECTION
@@ -38,5 +51,7 @@ services:
         value: file
       - key: FILESYSTEM_DISK
         value: local
+
+      # MAIL
       - key: MAIL_MAILER
         value: log
