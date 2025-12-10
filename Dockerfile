@@ -1,45 +1,45 @@
-# Utiliser l'image PHP 8.2 avec FPM
-FROM php:8.2-fpm
+FROM php:8.2-apache
 
-# Installer les dépendances systèmes nécessaires
-# Ajout de default-mysql-client pour les outils MySQL (y compris SSL)
+# 1. Installer les dépendances système nécessaires
 RUN apt-get update && apt-get install -y \
-    git unzip zip curl \
-    libpng-dev libonig-dev libxml2-dev libpq-dev libjpeg-dev libfreetype6-dev \
-    postgresql-client default-mysql-client \
-    && rm -rf /var/lib/apt/lists/*
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    git \
+    curl \
+    default-mysql-client
 
-# Configurer GD avec JPEG/Freetype
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+# 2. Installer les extensions PHP requises par Laravel
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# Installer les extensions PHP nécessaires
-RUN docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd
+# 3. Activer le module de réécriture Apache (pour les routes Laravel)
+RUN a2enmod rewrite
 
-# Installer Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# 4. Configurer la racine d'Apache vers le dossier /public
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/000-default.conf
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
-# Définir le répertoire de travail
+# 5. Installer Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# 6. Définir le dossier de travail
 WORKDIR /var/www/html
 
-# Copier le projet
-COPY . .
+# 7. Copier tous les fichiers du projet
+COPY . /var/www/html
 
-# IMPORTANT : Copier le certificat CA Aiven (nommé 'ca.pem' dans cet exemple)
-# Assurez-vous d'avoir ce fichier dans votre dépôt Git et de l'avoir nommé 'ca.pem'
-COPY ca.pem /etc/ssl/certs/aiven-ca.pem
+# 8. Installer les dépendances PHP (Optimisé pour la prod)
+RUN composer install --no-dev --optimize-autoloader
 
-# Installer les dépendances Laravel (sans scripts)
-# --no-scripts permet d'éviter les appels à 'artisan' qui échoueraient à la construction
-RUN composer install --optimize-autoloader --no-dev --no-scripts
-
-# Donner les bonnes permissions aux dossiers storage et cache
+# 9. Donner les permissions au dossier storage (CRUCIAL)
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Exposer le port
-EXPOSE 8000
+# 10. Exposer le port 80 (standard pour Apache)
+EXPOSE 80
 
-# Démarrer le conteneur et exécuter les tâches de déploiement
-# 1. php artisan config:clear : Force la lecture des variables d'environnement Render (y compris l'hôte et la configuration SSL).
-# 2. php artisan migrate --force : Exécute les migrations (maintenant que la configuration DB est propre et utilise le SSL).
-# 3. php artisan serve : Lance le serveur.
-CMD sh -c "php artisan config:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000"
+# 11. Utiliser ton script deploy.sh comme point d'entrée
+RUN chmod +x deploy.sh
+CMD ["./deploy.sh"]
