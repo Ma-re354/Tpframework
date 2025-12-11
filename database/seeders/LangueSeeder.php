@@ -15,8 +15,8 @@ class LangueSeeder extends Seeder
     {
         $langues = [
             ['nom_langue' => 'Français', 'code_langue' => 'fr', 'description' => 'Français', 'created_at' => now(), 'updated_at' => now()],
-            ['nom_langue' => 'Anglais', 'code_langue' => 'en', 'description' => 'Anglais', 'created_at' => now(), 'updated_at' => now()],
-            ['nom_langue' => 'Espagnol', 'code_langue' => 'es', 'description' => 'Espagnol', 'created_at' => now(), 'updated_at' => now()],
+          
+            
         ];
 
         DB::table('langues')->insertOrIgnore($langues);
