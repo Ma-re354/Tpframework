@@ -20,8 +20,8 @@ class utilisateurseeder extends Seeder
         User::create([
             'nom' => 'COMLAN',
             'prenom' => 'Maurice',
-            'email' => 'mauricecomlan@uac.bj',
-            'mot_de_passe' => bcrypt('eneam123'),
+            'email' => 'maurice.comlan@uac.bj',
+            'mot_de_passe' => bcrypt('Eneam123'),
             'sexe' => 'F',
             'date_inscription' => Carbon::parse('2024-01-15'),
             'date_naissance' => Carbon::parse('1995-06-20'),
