@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Langue;
+use App\Models\langue;
 use Illuminate\Http\Request;
 
 class LangueController extends Controller
