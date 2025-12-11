@@ -69,21 +69,9 @@
                                         <i class="fas fa-tachometer-alt"></i> Tableau de bord
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                                        <i class="fas fa-user-edit"></i> Mon profil
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('mes-contenus') }}">
-                                        <i class="fas fa-file-alt"></i> Mes contenus
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('mes-achats') }}">
-                                        <i class="fas fa-shopping-cart"></i> Mes achats
-                                    </a>
-                                </li>
+                               
+                                
+                                
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
