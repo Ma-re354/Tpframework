@@ -69,9 +69,12 @@
                                         <i class="fas fa-tachometer-alt"></i> Tableau de bord
                                     </a>
                                 </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                        <i class="fas fa-user-edit"></i> Mon profil
+                                    </a>
+                                </li>
                                
-                                
-                                
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
