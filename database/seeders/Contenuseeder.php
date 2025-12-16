@@ -139,6 +139,21 @@ class Contenuseeder extends Seeder
                 'id_auteur' => $auteur->id_utilisateur,
                 'id_moderateur' => $auteur->id_utilisateur,
             ],
+             [
+                'titre' => 'La Fête des Masques à Dassa-Zoumé',
+                'texte' => 'Dassa-Zoumé célèbre la Fête des Masques avec des danses traditionnelles, des rituels et des cérémonies qui honorent les esprits ancestraux et renforcent les liens communautaires.',
+                'photos' => json_encode([
+                    'https://www.bing.com/images/search?view=detailV2&ccid=xMe8jQQo&id=9BBCB33DC8956BFCCF651A4EED24773D95DD4CD6&thid=OIP.xMe8jQQo9HoCpalts5AqowHaEK&mediaurl=https%3a%2f%2fcdn.thecollector.com%2fwp-content%2fuploads%2f2024%2f11%2fphoto-of-zangbeto-dancing.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.c4c7bc8d0428f47a02a5a96db3902aa3%3frik%3d1kzdlT13JO1OGg%26pid%3dImgRaw%26r%3d0&exph=675&expw=1200&q=DANSE+ZANGBETO&FORM=IRPRST&ck=9C9A1B4059E99A2796163F19354933C0&selectedIndex=2&itb=0'
+                ]),
+                'date_creation' => Carbon::now()->subHours(3),
+                'statut' => 'publié',
+                'id_region' => $regionAtacora->id_region,
+                'id_langue' => $langueFr->id_langue,
+                'id_type_contenu' => $typePhoto->id_type_contenu,
+                'id_auteur' => $auteur->id_utilisateur,
+                'id_moderateur' => $auteur->id_utilisateur, 
+            ],
+
 
         ];
 
