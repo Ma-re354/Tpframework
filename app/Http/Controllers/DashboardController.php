@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Models\Langue;
+use App\Models\langue;
 use App\Models\Region;
 use App\Models\Contenu;
 use App\Models\User;

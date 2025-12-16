@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use App\Models\Langue;
+use App\Models\langue;
 use App\Models\User;
 use App\Models\Region;
 use App\Models\TypeContenu;
+
+
 
 class Contenu extends Model
 {

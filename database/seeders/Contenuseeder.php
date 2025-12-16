@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Contenu;
 use App\Models\User;
 use App\Models\Region;
-use App\Models\Langue;
+use App\Models\langue;
 use App\Models\TypeContenu;
 use Carbon\Carbon;
 
