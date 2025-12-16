@@ -11,11 +11,22 @@
                     <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            {{-- les autres colonnes --}}
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="{{ route('home') }}">Accueil</a></li>
+                    <li><a href="{{ route('contenus.index') }}">Contenus</a></li>
+                    <li><a href="{{ route('langues.index') }}">Langues</a></li>
+                    <li><a href="{{ route('regions.index') }}">Régions</a></li>
+                    <li><a href="{{ route('contribuer') }}">Contribuer</a></li>
+                    
+                   
+                    
+                </ul>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2023 Bénin Culture - Tous droits réservés | Patrimoine et Innovation</p>
+            <p>&copy; 2025 Bénin Culture - Tous droits réservés | Patrimoine et Innovation</p>
         </div>
     </div>
 </footer>
