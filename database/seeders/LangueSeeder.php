@@ -15,6 +15,11 @@ class LangueSeeder extends Seeder
     {
         $langues = [
             ['nom_langue' => 'Français', 'code_langue' => 'fr', 'description' => 'Français', 'created_at' => now(), 'updated_at' => now()],
+            ['nom_langue' => 'Fon', 'code_langue' => 'Fn', 'description' => 'Fon', 'created_at' => now(), 'updated_at' => now()],
+            ['nom_langue' => 'Bariba', 'code_langue' => 'Br', 'description' => 'Bariba', 'created_at' => now(), 'updated_at' => now()],
+            ['nom_langue' => 'Goun', 'code_langue' => 'Gn', 'description' => 'Goun', 'created_at' => now(), 'updated_at' => now()],
+            ['nom_langue' => 'Tori', 'code_langue' => 'Tr', 'description' => 'Tori', 'created_at' => now(), 'updated_at' => now()],
+            ['nom_langue' => 'Minan', 'code_langue' => 'Mn', 'description' => 'Minan', 'created_at' => now(), 'updated_at' => now()],
           
             
         ];
