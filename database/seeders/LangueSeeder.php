@@ -20,6 +20,7 @@ class LangueSeeder extends Seeder
             ['nom_langue' => 'Goun', 'code_langue' => 'Gn', 'description' => 'Goun', 'created_at' => now(), 'updated_at' => now()],
             ['nom_langue' => 'Tori', 'code_langue' => 'Tr', 'description' => 'Tori', 'created_at' => now(), 'updated_at' => now()],
             ['nom_langue' => 'Minan', 'code_langue' => 'Mn', 'description' => 'Minan', 'created_at' => now(), 'updated_at' => now()],
+            ['nom_langue' => 'Yoruba', 'code_langue' => 'Yr', 'description' => 'Yoruba', 'created_at' => now(), 'updated_at' => now()],
           
             
         ];
