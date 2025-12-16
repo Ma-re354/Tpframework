@@ -65,7 +65,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                    <a class="dropdown-item" href="{{ route('dashboard.accueil') }}">
                                         <i class="fas fa-tachometer-alt"></i> Tableau de bord
                                     </a>
                                 </li>

@@ -64,7 +64,7 @@ class Contenu extends Model
     {
         $photos = json_decode($value, true);
 
-        // Si json_decode échoue ou renvoie null, on vérifie si $value contient une seule URL
+       
         if (!is_array($photos)) {
             $photos = $value ? [$value] : [];
         }
