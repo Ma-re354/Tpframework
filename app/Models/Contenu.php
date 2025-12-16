@@ -9,8 +9,6 @@ use App\Models\User;
 use App\Models\Region;
 use App\Models\TypeContenu;
 
-
-
 class Contenu extends Model
 {
     protected $table = 'contenues';
@@ -61,24 +59,32 @@ class Contenu extends Model
         return $this->belongsTo(TypeContenu::class, 'id_type_contenu', 'id_type_contenu');
     }
 
+    // Mutator sécurisé pour les photos
     public function getPhotosAttribute($value)
     {
-        if ($value) {
-            $photos = json_decode($value, true);
-            return array_map(fn($photo) => asset($photo), $photos);
+        $photos = json_decode($value, true);
+
+        // Si json_decode échoue ou renvoie null, on vérifie si $value contient une seule URL
+        if (!is_array($photos)) {
+            $photos = $value ? [$value] : [];
         }
-        return [];
+
+        return array_map(fn($photo) => asset($photo), $photos);
     }
 
+    // Mutator sécurisé pour les vidéos
     public function getVideosAttribute($value)
     {
-        if ($value) {
-            $videos = json_decode($value, true);
-            return array_map(fn($video) => asset($video), $videos);
+        $videos = json_decode($value, true);
+
+        if (!is_array($videos)) {
+            $videos = $value ? [$value] : [];
         }
-        return [];
+
+        return array_map(fn($video) => asset($video), $videos);
     }
 
+    // Récupère la première photo ou une image par défaut
     public function getFirstPhotoAttribute()
     {
         $photos = $this->photos;
