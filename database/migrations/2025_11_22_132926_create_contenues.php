@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('date_creation')->nullable();
             $table->string('statut')->default('en_attente');
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->string('photos')->nullable();
+            $table->text('photos')->nullable();
             $table->date('date_validation')->nullable();
             $table->unsignedBigInteger('id_region');
             $table->unsignedBigInteger('id_langue');
