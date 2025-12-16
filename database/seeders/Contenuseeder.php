@@ -10,6 +10,7 @@ use App\Models\Langue;
 use App\Models\TypeContenu;
 use Carbon\Carbon;
 
+
 class Contenuseeder extends Seeder
 {
     public function run(): void
