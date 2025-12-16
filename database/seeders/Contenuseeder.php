@@ -144,11 +144,25 @@ class Contenuseeder extends Seeder
 
         ];
 
-        foreach ($contenus as $contenu) {
-            $contenu['parent_id'] = 0;
-            Contenu::create($contenu);
+      foreach ($contenus as $contenu) {
+            Contenu::updateOrCreate(
+                [
+                    'titre' => $contenu['titre'],
+                    'id_langue' => $langueFr->id_langue,
+                    'id_region' => $contenu['id_region'],
+                ],
+                [
+                    'texte' => $contenu['texte'],
+                    'photos' => json_encode($contenu['photos']),
+                    'date_creation' => $contenu['date_creation'],
+                    'statut' => 'publié',
+                    'id_type_contenu' => $typePhoto->id_type_contenu,
+                    'id_auteur' => $auteur->id_utilisateur,
+                    'id_moderateur' => $auteur->id_utilisateur,
+                    'parent_id' => 0,
+                ]
+            );
         }
-
         echo "Seed des contenus photos terminé.\n";
     }
 }
