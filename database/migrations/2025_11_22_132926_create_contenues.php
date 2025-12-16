@@ -18,12 +18,14 @@ return new class extends Migration
             $table->date('date_creation')->nullable();
             $table->string('statut')->default('en_attente');
             $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('photos')->nullable();
             $table->date('date_validation')->nullable();
             $table->unsignedBigInteger('id_region');
             $table->unsignedBigInteger('id_langue');
             $table->unsignedBigInteger('id_moderateur')->nullable();
             $table->unsignedBigInteger('id_type_contenu');
             $table->unsignedBigInteger('id_auteur');
+            
 
             $table->foreign('id_region')->references('id_region')->on('regions');
             $table->foreign('id_langue')->references('id_langue')->on('langues');
