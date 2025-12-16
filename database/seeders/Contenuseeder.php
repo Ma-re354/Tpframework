@@ -10,7 +10,6 @@ use App\Models\langue;
 use App\Models\TypeContenu;
 use Carbon\Carbon;
 
-
 class Contenuseeder extends Seeder
 {
     public function run(): void
@@ -45,7 +44,9 @@ class Contenuseeder extends Seeder
             [
                 'titre' => 'Le Marché Dantokpa',
                 'texte' => 'Le marché Dantokpa à Cotonou est le plus grand marché d’Afrique de l’Ouest, symbole du commerce et de la vie animée béninoise.',
-                'photos' => 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800',
+                'photos' => json_encode([
+                    'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800'
+                ]),
                 'date_creation' => Carbon::now()->subDays(5),
                 'statut' => 'publié',
                 'id_region' => $regionAtlantique->id_region,
@@ -57,7 +58,9 @@ class Contenuseeder extends Seeder
             [
                 'titre' => 'Les Plages de Grand-Popo',
                 'texte' => 'Grand-Popo est célèbre pour ses plages paisibles et ses couchers de soleil spectaculaires le long du littoral béninois.',
-                'photos' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
+                'photos' => json_encode([
+                    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'
+                ]),
                 'date_creation' => Carbon::now()->subDays(3),
                 'statut' => 'publié',
                 'id_region' => $regionAtlantique->id_region,
@@ -69,7 +72,9 @@ class Contenuseeder extends Seeder
             [
                 'titre' => 'La Forêt de Pendjari',
                 'texte' => 'Le Parc National de la Pendjari est un sanctuaire naturel, abritant éléphants, lions et buffles dans des paysages majestueux.',
-                'photos' => 'https://images.unsplash.com/photo-1562158070-7d234f2e15d6?w=800',
+                'photos' => json_encode([
+                    'https://images.unsplash.com/photo-1562158070-7d234f2e15d6?w=800'
+                ]),
                 'date_creation' => Carbon::now()->subDays(2),
                 'statut' => 'publié',
                 'id_region' => $regionAtacora->id_region,
@@ -81,7 +86,9 @@ class Contenuseeder extends Seeder
             [
                 'titre' => 'Les Sculptures de Ouidah',
                 'texte' => 'Ouidah est célèbre pour ses sculptures et monuments commémoratifs liés à l’histoire et à la culture béninoises.',
-                'photos' => 'https://images.unsplash.com/photo-1574169208507-843761648e2b?w=800',
+                'photos' => json_encode([
+                    'https://images.unsplash.com/photo-1574169208507-843761648e2b?w=800'
+                ]),
                 'date_creation' => Carbon::now()->subDays(1),
                 'statut' => 'publié',
                 'id_region' => $regionAtlantique->id_region,
